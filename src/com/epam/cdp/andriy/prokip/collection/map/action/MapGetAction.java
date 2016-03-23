@@ -2,14 +2,14 @@ package com.epam.cdp.andriy.prokip.collection.map.action;
 
 import java.util.Map;
 
-public class MapSize implements MapAction {
+public class MapGetAction implements MapAction {
 
-	private String keyPattern = "Element %d";
-	private String valuePattern = "Element %d";
+	private String keyPattern = "Key %d";
+	private String valuePattern = "Value %d";
 
 	@Override
 	public String getName() {
-		return "size()";
+		return "get()";
 	}
 
 	@Override
@@ -19,8 +19,8 @@ public class MapSize implements MapAction {
 		}
 
 		long start = System.nanoTime();
-		for (int i = 0; i < limit; i++) {
-			map.size();
+		for (int i = 0, size = map.size(); i < limit; i++) {
+			map.get(String.format(keyPattern, i % size));
 		}
 		return System.nanoTime() - start;
 	}

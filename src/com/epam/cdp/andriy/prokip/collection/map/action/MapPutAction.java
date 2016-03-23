@@ -2,7 +2,7 @@ package com.epam.cdp.andriy.prokip.collection.map.action;
 
 import java.util.Map;
 
-public class MapPut implements MapAction {
+public class MapPutAction implements MapAction {
 
 	private String keyPattern = "Key %d";
 	private String valuePattern = "Value %d";

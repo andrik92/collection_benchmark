@@ -3,9 +3,9 @@ package com.epam.cdp.andriy.prokip.collection.test;
 import com.epam.cdp.andriy.prokip.collection.factory.map.MapFactory;
 import com.epam.cdp.andriy.prokip.collection.factory.map.MapFactoryImpl;
 import com.epam.cdp.andriy.prokip.collection.map.action.MapAction;
-import com.epam.cdp.andriy.prokip.collection.map.action.MapGet;
-import com.epam.cdp.andriy.prokip.collection.map.action.MapPut;
-import com.epam.cdp.andriy.prokip.collection.map.action.MapSize;
+import com.epam.cdp.andriy.prokip.collection.map.action.MapGetAction;
+import com.epam.cdp.andriy.prokip.collection.map.action.MapPutAction;
+import com.epam.cdp.andriy.prokip.collection.map.action.MapMemorySize;
 
 public class TestMapPerformance {
 
@@ -25,11 +25,13 @@ public class TestMapPerformance {
 		};// @formatter:on
 
 		MapAction[] mapActions = {// @formatter:off
-			new MapPut(),
-			new MapGet(),
-			new MapSize()
+			new MapPutAction(),
+			new MapGetAction(),
+//			new MapMemorySize()
 		};// @formatter:on
 
+		MapMemorySize memorySize = new MapMemorySize();
+		
 		System.out.println("\n\tMap Impl");
 		System.out.printf("%-30s", "[elements="+ LIMIT + ", runs:" + RUNS + "]");
 		
@@ -37,17 +39,17 @@ public class TestMapPerformance {
 			System.out.printf("|  %-13s", mapAction.getName());
 		}
 
-		System.out.println();
+		System.out.printf("|  %-13s\n", memorySize.getName());
 
 		for (MapFactory factory : factories) {
-			TestMapPerformance.run(LIMIT, RUNS, factory, mapActions);
+			TestMapPerformance.run(LIMIT, RUNS, factory, memorySize, mapActions);
 		}
 	}
 
 	private static void run(int limit, int runs,
-			MapFactory listFactory, MapAction... timeMapActions) {
+			MapFactory factory, MapMemorySize memorySize, MapAction... timeMapActions) {
 
-		System.out.printf("%-30s", listFactory.getName());
+		System.out.printf("%-30s", factory.getName());
 
 		for (MapAction timeMapAction : timeMapActions) {
 			long timeInNs = 0;
@@ -55,7 +57,7 @@ public class TestMapPerformance {
 			System.gc();
 
 			for (int i = 0; i < runs; i++) {
-				long time = timeMapAction.timeAction(listFactory.create(limit),
+				long time = timeMapAction.timeAction(factory.create(limit),
 						limit);
 				timeInNs += time;
 			}
@@ -65,7 +67,7 @@ public class TestMapPerformance {
 			System.out.printf("| %8.3f Mills", avgTimeInMs);
 		}
 
-		System.out.println();
+		System.out.printf("| %10d Kb\n", memorySize.getMapMemorySize(factory, limit));
 
 		System.gc();
 	}
