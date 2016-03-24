@@ -1,4 +1,4 @@
-package com.epam.cdp.andriy.prokip.collection.map.action;
+package com.epam.cdp.andriy.prokip.jcf.map.action;
 
 import java.util.Map;
 

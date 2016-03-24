@@ -1,11 +1,11 @@
-package com.epam.cdp.andriy.prokip.collection.test;
+package com.epam.cdp.andriy.prokip.jcf.test;
 
-import com.epam.cdp.andriy.prokip.collection.factory.map.MapFactory;
-import com.epam.cdp.andriy.prokip.collection.factory.map.MapFactoryImpl;
-import com.epam.cdp.andriy.prokip.collection.map.action.MapAction;
-import com.epam.cdp.andriy.prokip.collection.map.action.MapGetAction;
-import com.epam.cdp.andriy.prokip.collection.map.action.MapPutAction;
-import com.epam.cdp.andriy.prokip.collection.map.action.MapMemorySize;
+import com.epam.cdp.andriy.prokip.jcf.factory.map.MapFactory;
+import com.epam.cdp.andriy.prokip.jcf.factory.map.MapFactoryImpl;
+import com.epam.cdp.andriy.prokip.jcf.map.action.MapAction;
+import com.epam.cdp.andriy.prokip.jcf.map.action.MapGetAction;
+import com.epam.cdp.andriy.prokip.jcf.map.action.MapMemorySize;
+import com.epam.cdp.andriy.prokip.jcf.map.action.MapPutAction;
 
 public class TestMapPerformance {
 

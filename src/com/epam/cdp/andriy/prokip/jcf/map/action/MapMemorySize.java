@@ -1,8 +1,8 @@
-package com.epam.cdp.andriy.prokip.collection.map.action;
+package com.epam.cdp.andriy.prokip.jcf.map.action;
 
 import java.util.Map;
 
-import com.epam.cdp.andriy.prokip.collection.factory.map.MapFactory;
+import com.epam.cdp.andriy.prokip.jcf.factory.map.MapFactory;
 
 public class MapMemorySize {
 

@@ -1,4 +1,4 @@
-package com.epam.cdp.andriy.prokip.collection.factory.map;
+package com.epam.cdp.andriy.prokip.jcf.factory.map;
 
 import java.util.HashMap;
 import java.util.Hashtable;

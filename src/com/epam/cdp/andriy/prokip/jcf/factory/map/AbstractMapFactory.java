@@ -1,4 +1,4 @@
-package com.epam.cdp.andriy.prokip.collection.factory.map;
+package com.epam.cdp.andriy.prokip.jcf.factory.map;
 
 abstract class AbstractMapFactory implements MapFactory {
 	

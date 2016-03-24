@@ -1,8 +1,9 @@
-package com.epam.cdp.andriy.prokip.collection.list.action;
+package com.epam.cdp.andriy.prokip.jcf.collection.action;
 
+import java.util.Collection;
 import java.util.List;
 
-public class ListGetAction implements ListAction {
+public class ListGetAction implements CollectionAction {
 
 	private String pattern = "Element %d";
 
@@ -12,7 +13,10 @@ public class ListGetAction implements ListAction {
 	}
 
 	@Override
-	public long timeAction(List<String> list, int limit) {
+	public long timeAction(Collection<String> collection, int limit) {
+		
+		List<String> list = (List<String>) collection; 
+		
 		for (int i = 0; i < limit; i++) {
 			list.add(String.format(pattern, i));
 		}

@@ -1,10 +1,10 @@
-package com.epam.cdp.andriy.prokip.collection.list.action;
+package com.epam.cdp.andriy.prokip.jcf.collection.action;
 
-import java.util.List;
+import java.util.Collection;
 
-import com.epam.cdp.andriy.prokip.collection.factory.list.ListFactory;
+import com.epam.cdp.andriy.prokip.jcf.factory.collection.CollectionFactory;
 
-public class ListMemorySize {
+public class CollectionMemorySize {
 
 	private String pattern = "Element %d";
 	static final int K = 1024;
@@ -13,7 +13,7 @@ public class ListMemorySize {
 		return "memory size()";
 	}
 	
-	public int getListMemorySize(ListFactory factory, int limit) {
+	public int getListMemorySize(CollectionFactory factory, int limit) {
 
 		int size = 0;
 		System.gc();
@@ -22,7 +22,7 @@ public class ListMemorySize {
 			
 			long before = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
 			
-			List<String> list = factory.create(limit);
+			Collection<String> list = factory.create(limit);
 
 			for (int i = 0; i < limit; i++) {
 				list.add(String.format(pattern, i));
