@@ -3,11 +3,11 @@ package com.epam.cdp.andriy.prokip.collection.test;
 import com.epam.cdp.andriy.prokip.collection.factory.list.ListFactory;
 import com.epam.cdp.andriy.prokip.collection.factory.list.ListFactoryImpl;
 import com.epam.cdp.andriy.prokip.collection.list.action.ListAction;
-import com.epam.cdp.andriy.prokip.collection.list.action.ListAdd;
-import com.epam.cdp.andriy.prokip.collection.list.action.ListGet;
-import com.epam.cdp.andriy.prokip.collection.list.action.ListIterator;
-import com.epam.cdp.andriy.prokip.collection.list.action.ListSet;
-import com.epam.cdp.andriy.prokip.collection.list.action.ListSize;
+import com.epam.cdp.andriy.prokip.collection.list.action.ListAddAction;
+import com.epam.cdp.andriy.prokip.collection.list.action.ListGetAction;
+import com.epam.cdp.andriy.prokip.collection.list.action.ListIteratorAction;
+import com.epam.cdp.andriy.prokip.collection.list.action.ListSetAction;
+import com.epam.cdp.andriy.prokip.collection.list.action.ListMemorySize;
 
 public class TestListPerformance {
 
@@ -29,14 +29,16 @@ public class TestListPerformance {
 		};// @formatter:on
 
 		ListAction[] listActions = { // @formatter:off
-				new ListAdd(),
-				new ListSet(),
-				new ListGet(),
-				new ListIterator(),
-				new ListSize()
+				new ListAddAction(),
+				new ListSetAction(),
+				new ListGetAction(),
+				new ListIteratorAction(),
+//				new ListMemorySize()
 		
 		};// @formatter:on
 
+		 ListMemorySize memorySize = new ListMemorySize();
+		
 		System.out.println("\n\tList Impl");
 		System.out.printf("%-30s", "[elements="+ LIMIT + ", runs:" + RUNS + "]");
 		
@@ -44,14 +46,15 @@ public class TestListPerformance {
 			System.out.printf("|  %-13s", listAction.getName());
 		}
 
-		System.out.println();
+		System.out.printf("|  %-13s\n", memorySize.getName());
 
 		for (ListFactory factory : factories) {
-			TestListPerformance.run(LIMIT, RUNS, factory, listActions);
+			TestListPerformance.run(LIMIT, RUNS, factory, memorySize, listActions);
 		}
 	}
 
-	private static void run(int limit, int runs, ListFactory listFactory, ListAction... timeListActions) {
+	private static void run(int limit, int runs,
+			ListFactory listFactory, ListMemorySize memorySize, ListAction... timeListActions) {
 
 		System.out.printf("%-30s", listFactory.getName());
 
@@ -69,7 +72,7 @@ public class TestListPerformance {
 			System.out.printf("| %8.3f Mills", avgTimeInMs);
 		}
 
-		System.out.println();
+		System.out.printf("| %10d Kb\n", memorySize.getListMemorySize(listFactory, limit));
 		System.gc();
 	}
 }

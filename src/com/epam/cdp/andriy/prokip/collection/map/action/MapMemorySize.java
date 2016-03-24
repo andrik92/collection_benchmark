@@ -17,6 +17,8 @@ public class MapMemorySize {
 	public int getMapMemorySize(MapFactory factory, int limit) {
 
 		int size, i = 0;
+		
+		System.gc();
 
 		do {
 			
@@ -33,11 +35,11 @@ public class MapMemorySize {
 			
 			size = (int) (after - before);
 	
-			System.gc();
+			size /= K;	
 			
 		} while (size <= 0);
 
-		return size / K ;
+		return size;
 	}
 
 }

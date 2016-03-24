@@ -57,8 +57,7 @@ public class TestMapPerformance {
 			System.gc();
 
 			for (int i = 0; i < runs; i++) {
-				long time = timeMapAction.timeAction(factory.create(limit),
-						limit);
+				long time = timeMapAction.timeAction(factory.create(limit), limit);
 				timeInNs += time;
 			}
 

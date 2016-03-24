@@ -1,15 +1,14 @@
 package com.epam.cdp.andriy.prokip.collection.list.action;
 
-import java.util.Iterator;
 import java.util.List;
 
-public class ListIterator implements ListAction {
+public class ListGetAction implements ListAction {
 
 	private String pattern = "Element %d";
 
 	@Override
 	public String getName() {
-		return "iterate()";
+		return "get()";
 	}
 
 	@Override
@@ -17,9 +16,10 @@ public class ListIterator implements ListAction {
 		for (int i = 0; i < limit; i++) {
 			list.add(String.format(pattern, i));
 		}
+
 		long start = System.nanoTime();
-		for (Iterator<String> i = list.iterator(); i.hasNext();) {
-			i.next();
+		for (int i = 0, size = list.size(); i < limit; i++) {
+			list.get(i % size);
 		}
 		return System.nanoTime() - start;
 	}
