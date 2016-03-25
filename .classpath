@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/Andriy_Prokip/.m2/repository/com/google/guava/guava-base/r03/guava-base-r03.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Andriy_Prokip/.m2/repository/com/google/guava/guava-collections/r03/guava-collections-r03.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

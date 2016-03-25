@@ -5,6 +5,7 @@ import com.epam.cdp.andriy.prokip.jcf.collection.action.CollectionAddAction;
 import com.epam.cdp.andriy.prokip.jcf.collection.action.CollectionIteratorAction;
 import com.epam.cdp.andriy.prokip.jcf.collection.action.CollectionMemorySize;
 import com.epam.cdp.andriy.prokip.jcf.collection.action.ListGetAction;
+import com.epam.cdp.andriy.prokip.jcf.collection.action.ListRemoveAction;
 import com.epam.cdp.andriy.prokip.jcf.collection.action.ListSetAction;
 import com.epam.cdp.andriy.prokip.jcf.factory.collection.CollectionFactory;
 import com.epam.cdp.andriy.prokip.jcf.factory.collection.ListFactoryImpl;
@@ -34,10 +35,12 @@ public class TestListPerformance {
 				new ListSetAction(),
 				new ListGetAction(),
 				new CollectionIteratorAction(),
+				new ListRemoveAction()
 		
 		};// @formatter:on
 
-		 CollectionMemorySize memorySize = new CollectionMemorySize();
+		
+		CollectionMemorySize memorySize = new CollectionMemorySize();
 		
 		System.out.println("\n\tList Impl");
 		System.out.printf("%-30s", "[elements="+ LIMIT + ", runs:" + RUNS + "]");

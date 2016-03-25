@@ -6,5 +6,5 @@ public interface MapAction {
 
 	String getName();
 
-	long timeAction(Map<String, String> list, int limit);
+	long timeAction(Map<String, String> Ã¿œ, int limit);
 }
